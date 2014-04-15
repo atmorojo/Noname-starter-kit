@@ -1,7 +1,7 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
-guard 'coffeescript', :input => 'app/assets/javascripts'
+guard 'coffeescript', :input => 'public/js'
 
 # Guard::Compass
 #
@@ -22,7 +22,7 @@ guard :compass
 # This will concatenate the javascript files specified in :files to public/js/all.js
 guard :concat, type: "js", files: %w(), input_dir: "public/js", output: "public/js/all"
 
-guard :concat, type: "css", files: %w(), input_dir: "public/css", output: "public/css/all"
+# guard :concat, type: "css", files: %w(), input_dir: "public/css", output: "public/css/all"
 
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)$})
@@ -33,6 +33,6 @@ guard 'livereload' do
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
 end
 
-guard 'uglify', :destination_file => "public/javascripts/application.js" do
-  watch (%r{app/assets/javascripts/application.js})
-end
+# guard 'uglify', :destination_file => "public/javascripts/application.js" do
+#   watch (%r{app/assets/javascripts/application.js})
+# end
