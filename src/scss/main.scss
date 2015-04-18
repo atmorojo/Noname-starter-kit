@@ -53,12 +53,19 @@
 // @import "utilities/webfont";
 // @import "utilities/responsive-utilities";
 
-aside{
-	@include no(3)
+aside {
+    @include no(3)
 }
-section{
-	@include no(9)
+
+section {
+    @include no(9)
+
 }
-.wrap{
-	@include row
+.wrap {
+    @include row
+}
+
+.button {
+    @include no(12);
+    @include button(#EEE, #FFF, 1px, #000, 15px, 20px);
 }

@@ -435,7 +435,7 @@ th {
 }
 
 /* line 16, ../../src/scss/core/mixins/_layout_mixins.scss */
-aside, section {
+aside, section, .button {
   float: left;
   min-height: 1px;
   position: relative;
@@ -447,12 +447,12 @@ aside {
   width: 23%;
 }
 
-/* line 59, ../../src/scss/main.scss */
+/* line 60, ../../src/scss/main.scss */
 section {
   width: 73%;
 }
 
-/* line 62, ../../src/scss/main.scss */
+/* line 64, ../../src/scss/main.scss */
 .wrap {
   position: relative;
   margin: 0 auto;
@@ -465,4 +465,16 @@ section {
   content: "";
   display: table;
   clear: both;
+}
+
+/* line 68, ../../src/scss/main.scss */
+.button {
+  width: 98%;
+  background: #EEE;
+  border: 1px solid #000;
+  padding: 15px 20px;
+}
+/* line 13, ../../src/scss/komponen/default/_tombol.scss */
+.button:hover {
+  background: #FFF;
 }
