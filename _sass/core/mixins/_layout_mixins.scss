@@ -1,0 +1,28 @@
+// mixin untuk baris
+@mixin row {
+    position: relative;
+    margin: 0 auto;
+    width: 100%;
+    max-width: $wrap-width;
+    *zoom: 1;
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// placeholder untuk kolom
+%collumn {
+    float: left;
+    min-height: 1px;
+    position: relative;
+    padding: 0 $gutter * 1%;
+}
+
+// mixin untuk kolom
+@mixin no($span:1, $kolom:$columns, $jarak:$gutter) {
+    $col: abs(100 - $kolom * ($jarak * 2)) / $kolom;
+    width: ($col * $span) + ($jarak * 2 * ($span - 1))* 1%;
+    @extend %collumn;
+}

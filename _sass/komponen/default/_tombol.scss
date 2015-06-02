@@ -1,0 +1,16 @@
+@mixin button (
+$normal-bg-color,
+$hover-bg-color,
+$border,
+$border-color,
+$v-padding,
+$h-padding
+) {
+    background: $normal-bg-color;
+    border: $border solid $border-color;
+    padding: $v-padding $h-padding;
+
+    &:hover {
+        background: $hover-bg-color;
+    }
+};
