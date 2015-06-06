@@ -1,9 +1,34 @@
-// mixin untuk baris
-@mixin row {
+/************************************************
+/* Fungsi-fungsi dasar
+************************************************/
+
+/* Fungsi cari lebar 1 kolom */
+@function getcol($col:$columns, $gut:$gutter) {
+    @return abs(100 - $col * ($gut * 2 )) / $col;
+}
+
+/* Fungsi cari total lebar kolom */
+@function getwidth($col, $span, $gut:$gutter) {
+    $aCol: getcol($col, $gut);
+    @return ($aCol * $span) + ($gut * 2 * ($span - 1)) * 1%;
+}
+
+/* Fungsi geser kolom */
+@function push($shift, $col:$columns, $gut:$gutter) {
+    $aCol: getcol($col, $gut);
+    @return ($aCol * $shift) + ($gut * $shift) * 1%;
+}
+
+/**************************************************
+* Mixins
+***************************************************/
+
+/* Mixin untuk baris */
+@mixin row($max-width: $wrap-width) {
+    max-width: $max-width;
     position: relative;
     margin: 0 auto;
     width: 100%;
-    max-width: $wrap-width;
     *zoom: 1;
     &:after {
         content: "";
@@ -12,7 +37,7 @@
     }
 }
 
-// placeholder untuk kolom
+// Placeholder untuk kolom
 %collumn {
     float: left;
     min-height: 1px;
@@ -20,9 +45,11 @@
     padding: 0 $gutter * 1%;
 }
 
-// mixin untuk kolom
-@mixin no($span:1, $kolom:$columns, $jarak:$gutter) {
-    $col: abs(100 - $kolom * ($jarak * 2)) / $kolom;
-    width: ($col * $span) + ($jarak * 2 * ($span - 1))* 1%;
+// Mixin untuk kolom
+@mixin no($span:1, $col:$columns, $gut:$gutter) {
+    width: getwidth($col, $span, $gut);
     @extend %collumn;
 }
+
+// mixin untuk shift
+
