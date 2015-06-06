@@ -16,7 +16,7 @@
 /* Fungsi geser kolom */
 @function push($shift, $col:$columns, $gut:$gutter) {
     $aCol: getcol($col, $gut);
-    @return ($aCol * $shift) + ($gut * $shift) * 1%;
+    @return ($aCol * $shift) + ($gut * 2 * $shift) * 1%;
 }
 
 /**************************************************
@@ -37,19 +37,16 @@
     }
 }
 
-// Placeholder untuk kolom
-%collumn {
+// Mixin untuk kolom
+@mixin no($span:1, $col:$columns, $gut:$gutter) {
+    width: getwidth($col, $span, $gut);
     float: left;
     min-height: 1px;
     position: relative;
     padding: 0 $gutter * 1%;
 }
 
-// Mixin untuk kolom
-@mixin no($span:1, $col:$columns, $gut:$gutter) {
-    width: getwidth($col, $span, $gut);
-    @extend %collumn;
-}
-
 // mixin untuk shift
-
+@mixin shift($shift) {
+    margin-left: push($shift);
+}
